@@ -6,3 +6,10 @@
 .App > div {
   margin-right: 50px;
 }
+
+.delete-button {
+  border: none;
+  color: rgb(255, 255, 255);
+  background-color: red;
+  border-radius: 5px;
+}
