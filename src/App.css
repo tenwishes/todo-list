@@ -7,9 +7,15 @@
   margin-right: 50px;
 }
 
-.delete-button {
+button {
+  margin-left: 5px;
   border: none;
-  color: rgb(255, 255, 255);
-  background-color: red;
-  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgba(236,41,22,0.73);
+}
+
+ul li {
+  padding: 2px 5px;
 }
