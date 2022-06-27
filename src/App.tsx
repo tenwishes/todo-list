@@ -31,16 +31,16 @@ export function App() {
     }
 
     let [filter, setFilter] = useState<FilterValuesType>("all")
-    let tasks_for_render;
+    let taskForRender;
     switch (filter) {
         case "completed":
-            tasks_for_render = tasks.filter(task => task.isDone === true)
+            taskForRender = tasks.filter(task => task.isDone === true)
             break
         case "active":
-            tasks_for_render = tasks.filter(task => task.isDone === false)
+            taskForRender = tasks.filter(task => task.isDone === false)
             break
         default:
-            tasks_for_render = tasks
+            taskForRender = tasks
     }
     const changeFilter = (filter: FilterValuesType) => {
         setFilter(filter)
@@ -50,7 +50,7 @@ export function App() {
         <div className="App">
             <TodoList
                 title={"Languages"}
-                tasks={tasks_for_render}
+                tasks={taskForRender}
                 changeFilter={changeFilter}
                 removeTask={removeTask}
             />
