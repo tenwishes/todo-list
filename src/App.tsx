@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {v1} from "uuid";
 import './App.css';
 import {TodoList, TasksType} from "./components/TodoList";
 
@@ -7,26 +8,33 @@ export type FilterValuesType = "all" | "active" | "completed"
 export function App() {
 
     const data: Array<TasksType> = [
-        {id: 1, title: "HTML", isDone: true},
-        {id: 2, title: "CSS", isDone: false},
-        {id: 3, title: "JS", isDone: true},
-        {id: 4, title: "Python", isDone: false},
-        {id: 5, title: "Java", isDone: false},
-        {id: 6, title: "C#", isDone: true},
-        {id: 7, title: "Kotlin", isDone: true},
-        {id: 8, title: "C++", isDone: false},
-        {id: 9, title: "1C", isDone: false},
-        {id: 10, title: "Haskell", isDone: false},
-        {id: 11, title: "Swift", isDone: false},
-        {id: 12, title: "Rust", isDone: false},
-        {id: 13, title: "Golang", isDone: false},
-        {id: 14, title: "C", isDone: false}
+        {id: v1(), title: "HTML", isDone: true},
+        {id: v1(), title: "CSS", isDone: false},
+        {id: v1(), title: "JS", isDone: true},
+        {id: v1(), title: "Python", isDone: false},
+        {id: v1(), title: "Java", isDone: false},
+        {id: v1(), title: "C#", isDone: true},
+        {id: v1(), title: "Kotlin", isDone: true},
+        {id: v1(), title: "C++", isDone: false},
+        {id: v1(), title: "1C", isDone: false},
+        {id:  v1(), title: "Haskell", isDone: false},
+        {id:  v1(), title: "Swift", isDone: false},
+        {id:  v1(), title: "Rust", isDone: false},
+        {id:  v1(), title: "Golang", isDone: false},
+        {id:  v1(), title: "C", isDone: false}
     ]
+
     const [tasks, setTasks] = useState(data);
-    const removeTask = (id: number) => {
+
+    const removeTask = (id: string) => {
         let new_tasks = tasks.filter((task) => {
             return task.id !== id
         })
+        setTasks(new_tasks)
+    }
+    const addTask = (title: string) => {
+        let newTask = {id: v1(), title: title, isDone: false}
+        let new_tasks = [newTask, ...tasks]
         setTasks(new_tasks)
     }
 
@@ -51,8 +59,9 @@ export function App() {
             <TodoList
                 title={"Languages"}
                 tasks={taskForRender}
-                changeFilter={changeFilter}
                 removeTask={removeTask}
+                addTask={addTask}
+                changeFilter={changeFilter}
             />
         </div>
     );
