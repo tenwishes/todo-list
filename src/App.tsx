@@ -37,6 +37,13 @@ export function App() {
         let new_tasks = [newTask, ...tasks]
         setTasks(new_tasks)
     }
+    const changeStatus = (id: string, isDone: boolean) => {
+        let task = tasks.find(t => t.id === id)
+        if(task) {
+            task.isDone = isDone
+        }
+        setTasks([...tasks])
+    }
 
     let [filter, setFilter] = useState<FilterValuesType>("all")
     let taskForRender;
@@ -61,7 +68,9 @@ export function App() {
                 tasks={taskForRender}
                 removeTask={removeTask}
                 addTask={addTask}
+                changeStatus={changeStatus}
                 changeFilter={changeFilter}
+                filter={filter}
             />
         </div>
     );
