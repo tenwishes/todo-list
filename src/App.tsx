@@ -64,7 +64,7 @@ export function App() {
     return (
         <div className="App">
             <TodoList
-                title={"Languages"}
+                title={"Programming languages"}
                 tasks={taskForRender}
                 removeTask={removeTask}
                 addTask={addTask}
